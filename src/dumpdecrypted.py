@@ -390,8 +390,9 @@ def dump_macho_to_file(debugger, machoIdx, machoPath, fix_addr=0):
 
             // NSDocumentDirectory == 9 NSUserDomainMask == 1   
             NSString *docPath = ((NSArray*)NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 1, YES))[0];
+            const char *docPathChar =[docPath cStringUsingEncoding:NSUTF8StringEncoding];
             
-            strlcpy(npath, docPath.UTF8String, sizeof(npath));
+            strlcpy(npath, docPathChar, sizeof(npath));
             strlcat(npath, tmp, sizeof(npath));
             strlcat(npath, ".decrypted", sizeof(npath));
             strlcpy(x_buffer, npath, sizeof(x_buffer));
