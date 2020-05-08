@@ -389,7 +389,7 @@ def dump_macho_to_file(debugger, machoIdx, machoPath, fix_addr=0):
             }
 
             // NSDocumentDirectory == 9 NSUserDomainMask == 1   
-            NSString *docPath = ((NSArray*)NSSearchPathForDirectoriesInDomains(9, 1, YES))[0];
+            NSString *docPath = ((NSArray*)NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 1, YES))[0];
             
             strlcpy(npath, docPath.UTF8String, sizeof(npath));
             strlcat(npath, tmp, sizeof(npath));
